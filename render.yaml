@@ -1,0 +1,27 @@
+# Render Blueprint for the Drift demo site.
+#
+# `previews.generation: automatic` gives every pull request its own deployed
+# preview URL, which is what Drift needs in order to compare a PR against the
+# baseline recorded on main.
+previews:
+  generation: automatic
+
+services:
+  - type: web
+    name: uxsense-drift-demo
+    runtime: static
+    buildCommand: npm ci && npm run build && (npm run upload-manifest || echo "[uxsense] manifest upload skipped — UXSENSE_API_KEY not set")
+    staticPublishPath: ./dist
+    pullRequestPreviewsEnabled: true
+    routes:
+      # Single-page app: client-side routes must fall through to index.html.
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      # Recorder project id — set in the Render dashboard, not in this file.
+      - key: VITE_UXSENSE_PROJECT_ID
+        sync: false
+      # Used only by `uxsense upload-manifest` after the build.
+      - key: UXSENSE_API_KEY
+        sync: false
