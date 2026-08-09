@@ -8,6 +8,7 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
     "upload-manifest": "uxsense upload-manifest"
   },
   "dependencies": {
@@ -22,7 +23,8 @@
     "@uxsense/stamp": "^0.1.1",
     "@vitejs/plugin-react": "^4.3.2",
     "typescript": "^5.6.3",
-    "vite": "^5.4.9"
+    "vite": "^5.4.9",
+    "vitest": "^2.1.9"
   },
   "browserslist": [
     "chrome >= 110",

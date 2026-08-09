@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    name: typecheck · test · build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      # A clean build, so component stamping sees every file and the manifest
+      # it emits is complete. Runs without VITE_UXSENSE_PROJECT_ID — the
+      # recorder snippet is a deploy-time concern, not a CI one.
+      - name: Build
+        run: npm run build

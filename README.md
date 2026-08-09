@@ -19,9 +19,16 @@ The site is **Northwind Rail**, a five-step seat-booking flow — search → cho
 
 ```bash
 npm install
-npm run dev      # http://localhost:5173
-npm run build    # typecheck + production build
+npm run dev        # http://localhost:5173
+npm run typecheck  # tsc --noEmit
+npm test           # vitest — fare, timetable and validation logic
+npm run build      # typecheck + production build
 ```
+
+CI runs typecheck, test and build on every pull request
+(`.github/workflows/ci.yml`). **The regression PR passes all three** — the unit
+tests cover validation and timetable logic, which is what unit tests usually
+cover, and a behavioural regression lives in neither. That gap is the point.
 
 ## How UXSense is wired in
 
