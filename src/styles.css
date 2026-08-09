@@ -222,6 +222,10 @@ select:focus-visible,
   grid-template-columns: 1fr auto auto;
   align-items: center;
   gap: 1rem;
+  /* Keep every result the same height so the list reads as an even rhythm
+     rather than jumping around with the length of the route text. */
+  height: 5.5rem;
+  overflow: hidden;
 }
 
 .service__times,
