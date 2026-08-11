@@ -2,6 +2,8 @@
 
 A public, deliberately-regressed demo repository used to show Drift running on a real pull request.
 
+**Live site:** <https://northrail.uxsense.ai>
+
 ## What this is
 
 This repo hosts a small deployed site plus an open pull request that introduces a known UX regression. Drift runs as a check on that PR, so anyone can open the PR and read the check output for themselves.
@@ -65,4 +67,5 @@ The build tolerates a missing `UXSENSE_API_KEY` (it skips the upload rather than
 
 ## Links
 
-Pull requests are the point of this repo — start there.
+- **Live site** — <https://northrail.uxsense.ai>
+- **Pull requests** — the point of this repo; start there.
