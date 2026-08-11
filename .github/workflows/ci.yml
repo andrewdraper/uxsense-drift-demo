@@ -53,9 +53,13 @@ jobs:
       # Skips loudly rather than failing when the secret is absent (forks, and
       # any repo that has not set it), because a silent skip here looks exactly
       # like a clean check.
+      # GITHUB_SHA is the ephemeral MERGE commit on pull_request events, no
+      # matter which ref was checked out, and the CLI keys the manifest on it.
+      # Override it with the real head SHA or Drift never finds the manifest.
       - name: Upload behavioral manifest
         env:
           UXSENSE_API_KEY: ${{ secrets.UXSENSE_API_KEY }}
+          GITHUB_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           if [ -z "$UXSENSE_API_KEY" ]; then
             echo "::warning::UXSENSE_API_KEY is not set — skipping manifest upload."
