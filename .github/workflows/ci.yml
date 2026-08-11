@@ -30,3 +30,29 @@ jobs:
       # recorder snippet is a deploy-time concern, not a CI one.
       - name: Build
         run: npm run build
+
+      # Upload the build manifest for THIS commit.
+      #
+      # Drift's component-level check diffs the base commit's manifest against
+      # the head's. Without a manifest for the head there is nothing to diff,
+      # and the check degrades to limited mode — it cannot see a component
+      # being removed, renamed, or restructured, however much user load that
+      # component carries.
+      #
+      # This is the whole requirement for the component tier: the head has to
+      # be built and its manifest uploaded. A deployed preview is NOT needed
+      # for this — previews are only required for path replay.
+      #
+      # Skips loudly rather than failing when the secret is absent (forks, and
+      # any repo that has not set it), because a silent skip here looks exactly
+      # like a clean check.
+      - name: Upload behavioral manifest
+        env:
+          UXSENSE_API_KEY: ${{ secrets.UXSENSE_API_KEY }}
+        run: |
+          if [ -z "$UXSENSE_API_KEY" ]; then
+            echo "::warning::UXSENSE_API_KEY is not set — skipping manifest upload."
+            echo "::warning::Drift will run in LIMITED mode on this commit and cannot detect component-level changes."
+          else
+            npx uxsense upload-manifest
+          fi
