@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Stepper from '../components/Stepper'
 import { findServices, useBooking, type Service } from '../lib/booking'
 
-export default function ServicesPage() {
+export default function ServiceListPage() {
   const navigate = useNavigate()
   const { booking, setService } = useBooking()
 
