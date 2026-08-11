@@ -10,7 +10,14 @@ jobs:
     name: typecheck · test · build
     runs-on: ubuntu-latest
     steps:
+      # On a pull_request event, actions/checkout defaults to an ephemeral
+      # MERGE commit (head merged into base). Its SHA is not the PR head, so a
+      # manifest uploaded from that checkout is keyed to a commit Drift never
+      # looks for — and the check stays in limited mode however correctly the
+      # upload step is wired. Check out the head commit explicitly.
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - uses: actions/setup-node@v4
         with:
