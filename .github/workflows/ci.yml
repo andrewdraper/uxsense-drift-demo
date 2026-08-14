@@ -46,6 +46,10 @@ jobs:
       # Skips loudly rather than failing when the secret is absent (forks, and
       # any repo that has not set it), because a silent skip here looks exactly
       # like a clean check.
+      # No workflow gymnastics needed: @uxsense/stamp >=0.1.2 reads the PR head
+      # SHA from the event payload on pull_request events. Earlier versions
+      # keyed the manifest to the ephemeral merge commit, which Drift never
+      # looks for, so every PR check silently stayed in limited mode.
       - name: Upload behavioral manifest
         env:
           UXSENSE_API_KEY: ${{ secrets.UXSENSE_API_KEY }}

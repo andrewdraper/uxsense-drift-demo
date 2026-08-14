@@ -10,7 +10,7 @@ import {
   type Service,
 } from './lib/booking'
 import SearchPage from './pages/SearchPage'
-import ServicesPage from './pages/ServicesPage'
+import ServiceListPage from './pages/ServiceListPage'
 import PassengerPage from './pages/PassengerPage'
 import PaymentPage from './pages/PaymentPage'
 import ConfirmationPage from './pages/ConfirmationPage'
@@ -59,7 +59,7 @@ export default function App() {
         <main className="main">
           <Routes>
             <Route path="/" element={<SearchPage />} />
-            <Route path="/trains" element={<ServicesPage />} />
+            <Route path="/trains" element={<ServiceListPage />} />
             <Route path="/passenger" element={<PassengerPage />} />
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/confirmation" element={<ConfirmationPage />} />

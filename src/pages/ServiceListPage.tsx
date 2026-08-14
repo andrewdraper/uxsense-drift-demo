@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Stepper from '../components/Stepper'
 import { findServices, useBooking, type Service } from '../lib/booking'
 
-export default function ServicesPage() {
+export default function ServiceListPage() {
   const navigate = useNavigate()
   const { booking, setService } = useBooking()
 
@@ -37,6 +37,10 @@ export default function ServicesPage() {
       <ul className="services">
         {services.map((service) => (
           <li className="service" key={service.id}>
+            <div className="service__fare">
+              <strong>£{service.fareGBP}</strong>
+              <span className="service__meta">{service.seatsLeft} seats left</span>
+            </div>
             <div className="service__times">
               <strong>
                 {service.depart} → {service.arrive}
@@ -48,16 +52,12 @@ export default function ServicesPage() {
                   : `${service.changes} change${service.changes > 1 ? 's' : ''}`}
               </span>
             </div>
-            <div className="service__fare">
-              <strong>£{service.fareGBP}</strong>
-              <span className="service__meta">{service.seatsLeft} seats left</span>
-            </div>
             <button
               className="button button--primary"
               onClick={() => choose(service)}
               type="button"
             >
-              Select
+              Choose
             </button>
           </li>
         ))}
