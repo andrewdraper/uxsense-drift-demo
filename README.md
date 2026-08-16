@@ -71,6 +71,17 @@ Two environment variables must be set in the Render dashboard (both marked `sync
 
 The build tolerates a missing `UXSENSE_API_KEY` (it skips the upload rather than failing), so the site deploys before the keys are in place.
 
-## Links
+## Where to start
 
-Pull requests are the point of this repo — start there.
+The pull requests are the point of this repo. Both are permanently open and will never be merged.
+
+- **[#2 — Give the results list an even vertical rhythm](https://github.com/andrewdraper/uxsense-drift-demo/pull/2)**
+  Four lines of CSS that make the **Select** button unreachable below 545px. Green CI, green unit tests, and a clean component check — caught only by replaying recorded journeys against the pull request's preview. Mobile blocks, desktop passes.
+
+- **[#4 — Lead the results with price, and rename ServicesPage](https://github.com/andrewdraper/uxsense-drift-demo/pull/4)**
+  An ordinary refactor that breaks nothing, on a component sitting in the path of every completed booking. Caught from the build manifest alone, with no preview deployment involved.
+
+Read them in that order: #2 is what nothing else catches, #4 is what you get from a single line of CI.
+
+- **Live site** — <https://northrail.uxsense.ai>
+- **Setting Drift up on your own repo** — <https://app.uxsense.ai/help/drift-setup>
