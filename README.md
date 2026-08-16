@@ -8,6 +8,14 @@ This repo hosts a small deployed site plus an open pull request that introduces 
 
 The site is **Northwind Rail**, a five-step seat-booking flow — search → choose a service → passenger details → payment → confirmation. It is deliberately an ordinary form-driven flow: real validation, real client-side routing, no canvas. Those are the paths a returning user learns, and they are what Drift measures.
 
+## Scope
+
+This repository exists for one purpose: to demonstrate UXSense Drift running on public pull requests, where anyone can read the checks for themselves.
+
+It is **not** a product, a reference implementation, or an app anyone should depend on. Northwind Rail is a fiction. There are no real trains, no real fares, no real payments — card details are validated in the browser and never sent anywhere — and no backend of any kind.
+
+The open pull requests here are the point of the repo, not work in progress. They are deliberate, documented in their own descriptions, and will not be merged; `main` stays the clean baseline they are measured against.
+
 ## Ground rules
 
 - **The regression PR is never merged.** It stays open as a permanent, inspectable artifact. `main` is always the clean baseline.
