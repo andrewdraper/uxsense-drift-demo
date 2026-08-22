@@ -58,7 +58,7 @@ The project id lives in the deploy environment, not in this repo. With it unset 
 
 ## Deploying
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/andrewdraper/uxsense-drift-demo)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/uxsense-ai/uxsense-drift-demo)
 
 `render.yaml` is a Render Blueprint: a static site with `previews.generation: automatic`, so every pull request gets its own deployed preview URL. That per-PR preview is what Drift compares against the baseline.
 
