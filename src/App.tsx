@@ -70,8 +70,8 @@ export default function App() {
         <footer className="footer">
           <p>
             This site exists to demonstrate UXSense Drift on a pull request. Source:{' '}
-            <a href="https://github.com/andrewdraper/uxsense-drift-demo">
-              andrewdraper/uxsense-drift-demo
+            <a href="https://github.com/uxsense-ai/uxsense-drift-demo">
+              uxsense-ai/uxsense-drift-demo
             </a>
             .
           </p>
